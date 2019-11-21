@@ -57,7 +57,7 @@ def put_mask (path1, mask):
 
 if __name__ == '__main__':
 
-    path = '5-4.png'
+    path = 'input/5-4.png'
     img, img_gray, img_rgb = read_img(path)
     img_bl_gray = blurred(img_gray)
     edges = edges(img_gray, 120, 600)
