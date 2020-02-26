@@ -3,7 +3,7 @@ import cv2
 import matplotlib.pyplot as plt
 import os
 
-
+#readind files, starting from 1st; then resizind to 1280:760.
 def img_read(input_dir, size):
     input_images = [cv2.imread(os.path.join(input_dir, i)) for i in sorted(os.listdir(input_dir)) if i.endswith('png')]
 
@@ -27,7 +27,7 @@ def processing(img, c1=110, c2=400):
     return img_comb
 
 
-def morphologic(img_comb, iter_d=3, iter_e=2):
+def morphologic(img_comb, iter_d=3, iter_e=1):
     dilation = cv2.dilate(img_comb, np.ones((3, 3), np.uint8), iterations=iter_d)
     img_mask = cv2.erode(dilation, np.ones((2, 2), np.uint8), iterations=iter_e)
     return img_mask
@@ -73,4 +73,6 @@ if __name__ == '__main__':
             cv2.imwrite(os.path.join(folder_with_result, pic_name + '_masked.png'), result)
 
 plt.imshow(mask, cmap='gray')
+plt.show()
+plt.imshow(result)
 plt.show()
